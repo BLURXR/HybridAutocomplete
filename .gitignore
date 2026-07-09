@@ -1,0 +1,22 @@
+# Virtual environment
+venv/
+
+# Python cache/bytecode
+__pycache__/
+*.pyc
+
+# Environment variables / secrets
+.env
+
+# IDE
+.vscode/
+
+# OS junk
+.DS_Store
+
+# Model cache (sentence-transformers downloads models to a local cache dir)
+.cache/
+
+# HNSW index files — these are usually rebuilt from vocab.txt, don't need to be in git
+*.bin
+*.index
