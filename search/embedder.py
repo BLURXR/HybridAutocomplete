@@ -13,12 +13,13 @@ def embed(v):
 def cosine_search(q, v, vocab_embeddings, top_k=5):
     scores = vocab_embeddings @ embed(q)
     top = np.argsort(-scores)[:top_k]
-    return [(v[i], float(scores[i])) for i in top_k]
+    return [(v[i], float(scores[i])) for i in top]
 
 if __name__ == "__main__":
-    k = embed(load_vocab("data/vocab.txt"))
+    vocab = load_vocab("data/vocab.txt")
+    embeddings = embed(vocab)
 
-    query = "Java coding"
-    results = cosine_search(query, load_vocab("data/vocab.txt"), k)
-    for text, score in results:
-        print(f"{score:.3f} {text}")
+    query = "python coding"
+    results = cosine_search(query, vocab, embeddings)
+    for word, score in results:
+        print(f"{score:.3f} {word}")
